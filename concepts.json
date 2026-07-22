@@ -1,0 +1,255 @@
+{
+  "_comment": "Master concept list. Stratum A = canonical Anglo-marked trope (high trope gravity, culture-marked); B = canonical but near-universal trope (control); C = no dominant canonical analogy (control). trope_keywords are lowercase substrings used to auto-flag canonical-trope usage in coding_sheet.py — always verify by hand.",
+  "concepts": [
+    {
+      "id": "mle_optimization",
+      "pilot": true,
+      "stratum": "A",
+      "name": "maximum likelihood estimation",
+      "prompt_name": "maximum likelihood estimation in statistics",
+      "canonical_trope": "hot-and-cold parlor game / blindfolded hiker climbing a hill",
+      "why_marked": "Victorian/American parlor game ('you're getting warmer'); hiking-culture framing",
+      "trope_keywords": ["hot-and-cold", "hot and cold", "warmer", "colder", "blindfold", "hill climb", "hilltop", "top of the hill", "top of a hill"]
+    },
+    {
+      "id": "conditional_probability",
+      "pilot": true,
+      "stratum": "A",
+      "name": "conditional probability",
+      "prompt_name": "conditional probability and updating beliefs on new evidence",
+      "canonical_trope": "Monty Hall problem (three doors, goats, switch)",
+      "why_marked": "Named after the host of the US game show 'Let's Make a Deal'; presumes game-show familiarity",
+      "trope_keywords": ["monty hall", "game show", "three doors", "goat", "door number"]
+    },
+    {
+      "id": "hypothesis_testing",
+      "pilot": true,
+      "stratum": "A",
+      "name": "p-values and hypothesis testing",
+      "prompt_name": "p-values and statistical hypothesis testing",
+      "canonical_trope": "courtroom trial: innocent until proven guilty",
+      "why_marked": "Presumption of innocence is an Anglo-American legal principle; jury trials are not universal",
+      "trope_keywords": ["courtroom", "innocent until", "guilty", "trial", "jury", "verdict", "defendant", "prosecutor"]
+    },
+    {
+      "id": "feedback_control",
+      "pilot": true,
+      "stratum": "B",
+      "name": "negative feedback loops",
+      "prompt_name": "negative feedback loops in control systems",
+      "canonical_trope": "home thermostat",
+      "why_marked": "Reclassified A->B (2026-07-17) on native-informant judgment: thermostats/AC climate controls are familiar in urban China; the vehicle is globalized. Kept as a strong-canonical-trope control.",
+      "trope_keywords": ["thermostat", "furnace", "air conditioner kicks", "ac kicks"]
+    },
+    {
+      "id": "gradient_descent",
+      "pilot": true,
+      "stratum": "A",
+      "name": "gradient descent",
+      "prompt_name": "gradient descent in machine learning",
+      "canonical_trope": "hot-and-cold game / blindfolded hiker descending a hill or valley",
+      "why_marked": "Hot-and-cold is a Victorian/American parlor game ('you're getting warmer'); the hiking/foggy-mountain frame is the canonical English ML-pedagogy analogy",
+      "trope_keywords": ["hot-and-cold", "hot and cold", "warmer", "colder", "blindfold", "foggy", "fog", "hiker", "mountain", "valley", "downhill", "steepest"]
+    },
+    {
+      "id": "regression_to_mean",
+      "pilot": true,
+      "stratum": "A",
+      "name": "regression to the mean",
+      "prompt_name": "regression to the mean in statistics",
+      "canonical_trope": "sophomore slump / Sports Illustrated cover jinx / rookie of the year",
+      "why_marked": "US college and pro-sports culture; 'sophomore' itself is a US school-system term",
+      "trope_keywords": ["sophomore", "sports illustrated", "rookie", "batting", "cover jinx", "slump"]
+    },
+    {
+      "id": "deadlock",
+      "pilot": true,
+      "stratum": "A",
+      "name": "deadlock",
+      "prompt_name": "deadlock in concurrent computing",
+      "canonical_trope": "four-way stop / two polite people stuck in a doorway",
+      "why_marked": "Four-way stops are distinctively American traffic infrastructure; essentially nonexistent in China",
+      "trope_keywords": ["four-way stop", "four way stop", "4-way stop", "stop sign", "after you", "doorway"]
+    },
+    {
+      "id": "central_limit",
+      "pilot": false,
+      "stratum": "A",
+      "name": "the central limit theorem",
+      "prompt_name": "the central limit theorem",
+      "canonical_trope": "Galton board / Plinko",
+      "why_marked": "Plinko is from 'The Price Is Right' (US TV); Galton board is Victorian British",
+      "trope_keywords": ["plinko", "galton", "pegs", "price is right"]
+    },
+    {
+      "id": "nash_equilibrium",
+      "pilot": false,
+      "stratum": "A",
+      "name": "Nash equilibrium",
+      "prompt_name": "Nash equilibrium in game theory",
+      "canonical_trope": "prisoner's dilemma / game of chicken",
+      "why_marked": "Plea bargaining is distinctively American criminal procedure; 'chicken' is US teen car culture",
+      "trope_keywords": ["prisoner", "plea", "interrogat", "chicken", "swerve"]
+    },
+    {
+      "id": "opportunity_cost",
+      "pilot": false,
+      "stratum": "A",
+      "name": "opportunity cost",
+      "prompt_name": "opportunity cost in economics",
+      "canonical_trope": "'no such thing as a free lunch'",
+      "why_marked": "19th-century American saloon culture; canonical econ-101 idiom",
+      "trope_keywords": ["free lunch"]
+    },
+    {
+      "id": "simpsons_paradox",
+      "pilot": false,
+      "stratum": "A",
+      "name": "Simpson's paradox",
+      "prompt_name": "Simpson's paradox in statistics",
+      "canonical_trope": "baseball batting averages (Jeter vs Justice)",
+      "why_marked": "Baseball statistics are the canonical teaching example; US sports culture",
+      "trope_keywords": ["batting", "baseball", "jeter", "justice", "batter"]
+    },
+    {
+      "id": "founder_effect",
+      "pilot": false,
+      "stratum": "A",
+      "name": "the founder effect",
+      "prompt_name": "the founder effect in population genetics",
+      "canonical_trope": "Amish communities / Pitcairn islanders",
+      "why_marked": "Amish examples are the US biology-teaching canon",
+      "trope_keywords": ["amish", "pitcairn", "mayflower", "colonist"]
+    },
+    {
+      "id": "entropy",
+      "pilot": false,
+      "stratum": "A",
+      "name": "entropy",
+      "prompt_name": "entropy in thermodynamics",
+      "canonical_trope": "messy teenager's bedroom",
+      "why_marked": "Presumes Western housing norms (a bedroom per teenager)",
+      "trope_keywords": ["messy room", "bedroom", "teenager's room", "tidy room", "clean your room"]
+    },
+    {
+      "id": "marginal_utility",
+      "pilot": false,
+      "stratum": "A",
+      "name": "diminishing marginal utility",
+      "prompt_name": "diminishing marginal utility in economics",
+      "canonical_trope": "slices of pizza",
+      "why_marked": "US econ-101 canon; pizza is globalized but culturally marked",
+      "trope_keywords": ["pizza", "slice"]
+    },
+    {
+      "id": "expected_value",
+      "pilot": false,
+      "stratum": "A",
+      "name": "expected value",
+      "prompt_name": "expected value in probability",
+      "canonical_trope": "casino roulette / lottery tickets",
+      "why_marked": "The casino/Vegas frame is American; a Chinese frame might be mahjong stakes",
+      "trope_keywords": ["casino", "roulette", "vegas", "slot machine", "lottery"]
+    },
+    {
+      "id": "comparative_advantage",
+      "pilot": false,
+      "stratum": "A",
+      "name": "comparative advantage",
+      "prompt_name": "comparative advantage in trade",
+      "canonical_trope": "Robinson Crusoe / the lawyer who types faster than her secretary",
+      "why_marked": "English literary canon; US office archetypes",
+      "trope_keywords": ["crusoe", "desert island", "secretary", "lawyer who types"]
+    },
+    {
+      "id": "circuits",
+      "pilot": true,
+      "stratum": "B",
+      "name": "voltage and electric current",
+      "prompt_name": "voltage and current in electric circuits",
+      "canonical_trope": "water flowing through pipes",
+      "why_marked": "Near-universal: plumbing metaphor crosses cultures",
+      "trope_keywords": ["water", "pipe", "hose", "plumb", "pressure"]
+    },
+    {
+      "id": "packets",
+      "pilot": true,
+      "stratum": "B",
+      "name": "how data packets travel on the internet",
+      "prompt_name": "how data packets are routed on the internet",
+      "canonical_trope": "postal mail / letters",
+      "why_marked": "Near-universal: postal systems cross cultures",
+      "trope_keywords": ["mail", "letter", "envelope", "postal", "post office", "address"]
+    },
+    {
+      "id": "elasticity",
+      "pilot": false,
+      "stratum": "B",
+      "name": "price elasticity of demand",
+      "prompt_name": "price elasticity of demand",
+      "canonical_trope": "rubber band stretching",
+      "why_marked": "Near-universal object",
+      "trope_keywords": ["rubber band", "elastic band", "stretch"]
+    },
+    {
+      "id": "sunk_cost",
+      "pilot": false,
+      "stratum": "B",
+      "name": "the sunk cost fallacy",
+      "prompt_name": "the sunk cost fallacy",
+      "canonical_trope": "sitting through a bad movie because you paid for the ticket",
+      "why_marked": "Near-universal: cinema culture is global",
+      "trope_keywords": ["movie", "ticket", "cinema", "film", "buffet"]
+    },
+    {
+      "id": "confidence_intervals",
+      "pilot": true,
+      "stratum": "C",
+      "name": "confidence intervals",
+      "prompt_name": "confidence intervals in statistics",
+      "canonical_trope": "(none dominant)",
+      "why_marked": "No single canonical folk analogy — model must construct",
+      "trope_keywords": []
+    },
+    {
+      "id": "path_dependence",
+      "pilot": true,
+      "stratum": "C",
+      "name": "path dependence",
+      "prompt_name": "path dependence in economics and history",
+      "canonical_trope": "(none dominant; QWERTY is semi-canonical)",
+      "why_marked": "No single dominant folk analogy",
+      "trope_keywords": ["qwerty"]
+    },
+    {
+      "id": "eigenvectors",
+      "pilot": false,
+      "stratum": "C",
+      "name": "eigenvectors and eigenvalues",
+      "prompt_name": "eigenvectors and eigenvalues in linear algebra",
+      "canonical_trope": "(none dominant)",
+      "why_marked": "No folk-culture canonical analogy",
+      "trope_keywords": []
+    },
+    {
+      "id": "interaction_effects",
+      "pilot": false,
+      "stratum": "C",
+      "name": "statistical interaction effects",
+      "prompt_name": "interaction effects in statistics",
+      "canonical_trope": "(none dominant)",
+      "why_marked": "No folk-culture canonical analogy",
+      "trope_keywords": []
+    },
+    {
+      "id": "attention_mechanism",
+      "pilot": false,
+      "stratum": "C",
+      "name": "the attention mechanism in neural networks",
+      "prompt_name": "the attention mechanism in transformer neural networks",
+      "canonical_trope": "(none dominant yet — concept too new for a settled folk analogy)",
+      "why_marked": "Too recent for a canonical trope; watch what the model constructs",
+      "trope_keywords": []
+    }
+  ]
+}

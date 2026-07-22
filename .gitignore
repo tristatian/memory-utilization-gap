@@ -1,0 +1,15 @@
+# secrets — never commit
+.env
+
+# personal / non-repo documents (proposal contains job-search material and contact info)
+*.docx
+lesswrong_post.md
+
+# session tooling and OS noise
+.claude/
+__pycache__/
+*.pyc
+.DS_Store
+
+# superseded partial run (local gemma3:4b arm, 3 records)
+results_gemma4b_partial.jsonl
