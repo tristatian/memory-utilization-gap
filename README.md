@@ -1,5 +1,7 @@
 # The Memory-Utilization Gap: cultural provenance of LLM-generated analogies
 
+**→ [Read the full write-up with results and figures: REPORT.md](REPORT.md)**
+
 Modern assistants keep long-term memory about their users — yet when Gemini,
 which knew from memory that I grew up in China, explained maximum likelihood
 estimation to me, it reached for the "hot-and-cold" parlor game: an
@@ -23,15 +25,14 @@ concept is sampled at three steering levels:
 The **memory-utilization gap** is the L4−L1 difference: the distance between
 what the model *can* do and what memory *elicits*.
 
-**Pilot result (preliminary, keyword-flagged; human coding in progress):**
-across 660 generations (Gemini Flash-Lite, Gemma 31B), culturally tailored
-analogy vehicles appear in 0.5% of responses at L0, 0.5% at L1, and 29% at
-L4 — background in memory produced no detectable change over baseline, while
-the identical fact stated in the request moved behavior ~30 points. The
-strongest canonical trope (gradient descent's foggy-mountain hiker, 60/60
-generations) survives even explicit steering: models re-skin it with local
-proper nouns ("like Huangshan or Taishan") rather than select a different
-analogy.
+**Headline result (all 1,339 outputs coded):** personalization is bang-bang.
+With the user's background in simulated memory, culturally tailored analogies
+occur in 0-2 of 220 responses per condition — even under an explicit
+"personalize" system instruction, and even with naturalistic casual prompts —
+while an explicit in-request demand flips 73% of responses to Chinese-specific
+vehicles, overshooting into stereotype. Models use the same memory eagerly for
+expertise-tailoring, so the missing wiring is specifically cultural.
+Full findings, figures, and honest limitations: [REPORT.md](REPORT.md).
 
 ## Reproduce
 
