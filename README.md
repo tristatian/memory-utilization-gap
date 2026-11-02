@@ -16,14 +16,32 @@ picks — and how much steering does it take?
 pedagogy has a canonical, culturally marked analogy for them (stratum A:
 p-values → courtroom, gradient descent → hot-and-cold; B: canonical but
 globalized, e.g. circuits → water pipes; C: no canonical analogy). Each
-concept is sampled at three steering levels:
+concept is sampled at six steering levels, built from two ingredients — a
+simulated **memory note** ("Saved information about the user: grew up in
+China until 16, first language Mandarin, researcher interested in stats/ML")
+placed in the system prompt, and a **question** asked either formally
+("Explain X to a layperson using an analogy from everyday life") or casually
+("hey, i never really got X. can you explain it in a way that actually
+clicks?"):
 
-- **L0** — no user information
-- **L1** — the user's background sits in a simulated long-term-memory block
-- **L4** — the user states their background and asks for a familiar analogy
+- **L0** — formal question, no user information. Baseline: what analogies
+  does the model reach for when it knows nothing about you?
+- **L0c** — the same, casually phrased. Control for register: does
+  formal wording itself suppress adaptation? (It doesn't.)
+- **L1** — formal question, with the memory note present. The model knows
+  the background; nothing asks it to use it.
+- **L1c** — casual question + memory note. The most realistic condition:
+  how a real user with product memory actually types.
+- **L2** — formal question + memory note + a system line, "Personalize your
+  responses to the user when helpful." Mimics how deployed products are
+  actually configured.
+- **L4** — no memory note; the user says it outright: "I grew up in China
+  until I was 16 — explain X using an analogy that would be familiar to me."
+  The ceiling: what the model does when adaptation is explicitly demanded.
 
-The **memory-utilization gap** is the L4−L1 difference: the distance between
-what the model *can* do and what memory *elicits*.
+L1, L1c and L2 measure what memory elicits *spontaneously*; L4 measures what
+the model *can* do on demand. The **memory-utilization gap** is the distance
+between the two.
 
 **Headline result (all 1,339 outputs coded):** personalization is bang-bang.
 With the user's background in simulated memory, culturally tailored analogies
