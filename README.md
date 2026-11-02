@@ -24,24 +24,43 @@ placed in the system prompt, and a **question** asked either formally
 ("hey, i never really got X. can you explain it in a way that actually
 clicks?"):
 
-- **L0** — formal question, no user information. Baseline: what analogies
+Below, each level with exactly what the model sees, using gradient descent
+as the running example:
+
+- **L0 — formal question, no user information.** Baseline: what analogies
   does the model reach for when it knows nothing about you?
-- **L0c** — the same, casually phrased. Control for register: does
-  formal wording itself suppress adaptation? (It doesn't.)
-- **L1** — formal question, with the memory note present. The model knows
-  the background; nothing asks it to use it.
-- **L1c** — casual question + memory note. The most realistic condition:
+  > *User:* "Explain gradient descent in machine learning to a layperson
+  > using an analogy from everyday life."
+- **L0c — the same, casually phrased.** Control for register: does formal
+  wording itself suppress adaptation? (It doesn't.)
+  > *User:* "hey, i never really got gradient descent in machine learning.
+  > can you explain it in a way that actually clicks?"
+- **L1 — formal question + memory note.** The model knows the background;
+  nothing asks it to use it.
+  > *System:* the memory note above. *User:* same formal question as L0.
+- **L1c — casual question + memory note.** The most realistic condition:
   how a real user with product memory actually types.
-- **L2** — formal question + memory note + a system line, "Personalize your
-  responses to the user when helpful." Mimics how deployed products are
-  actually configured.
-- **L4** — no memory note; the user says it outright: "I grew up in China
-  until I was 16 — explain X using an analogy that would be familiar to me."
-  The ceiling: what the model does when adaptation is explicitly demanded.
+  > *System:* the memory note. *User:* same casual question as L0c.
+- **L2 — formal question + memory note + personalization instruction.**
+  Mimics how deployed products are actually configured behind the scenes.
+  > *System:* the memory note, then "Personalize your responses to the user
+  > when helpful." *User:* same formal question as L0.
+- **L4 — explicit demand, no memory note.** The ceiling: what the model
+  does when adaptation is directly requested.
+  > *User:* "I grew up in China and lived there until I was 16. Explain
+  > gradient descent in machine learning to me using an analogy from
+  > everyday life that would be familiar to me."
 
 L1, L1c and L2 measure what memory elicits *spontaneously*; L4 measures what
 the model *can* do on demand. The **memory-utilization gap** is the distance
 between the two.
+
+**Scale and models.** 11 concepts × 6 conditions × 10 samples (temperature
+1.0), each run on two models — `gemini-3.1-flash-lite` and `gemma-4-31b-it`
+(open weights, Gemini lineage), both via the Gemini API free tier — for
+1,320 generations, plus a 19-generation partial run of `gemini-3.5-flash`
+(excluded from aggregates; its free tier allows only 20 requests/day).
+**1,339 generations total, every one annotated** per [codebook.md](codebook.md).
 
 **Headline result (all 1,339 outputs coded):** personalization is bang-bang.
 With the user's background in simulated memory, culturally tailored analogies
