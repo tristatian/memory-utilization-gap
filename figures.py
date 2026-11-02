@@ -29,47 +29,53 @@ COND_LABELS = ["L0\nformal\nno info", "L0c\ncasual\nno info", "L1\nformal\nmemor
                "L1c\ncasual\nmemory", "L2\nmemory +\npersonalize instr.", "L4\nexplicit\ndemand"]
 
 # ---- Figure 1: canonical-trope survival across all six conditions ----------
+# Each concept gets its own categorical slot; the two stratum-B controls
+# (circuits, packets) are deliberately gray reference lines.
+AQUA = "#1baf7a"; VIOLET = "#4a3aa7"; RED = "#e34948"
 data = [
     ("gradient descent (foggy hiker)",   [100, 100, 100, 100, 100, 100], BLUE),
-    ("path dependence (QWERTY)",         [100, 100, 100, 100, 100, 100], None),
-    ("circuits (water pipes)",           [100, 100, 100, 100, 100, 100], None),
-    ("packets (postal mail)",            [100, 100, 100, 80, 100, 100],  None),
+    ("path dependence (QWERTY)",         [100, 100, 100, 100, 100, 100], GREEN),
+    ("circuits (water pipes) [control]", [100, 100, 100, 100, 100, 100], "#b5b4ad"),
+    ("packets (postal mail) [control]",  [100, 100, 100, 80, 100, 100],  "#8f8e88"),
     ("regression to mean (sports slump)",[95, 100, 80, 90, 80, 5],       ORANGE),
-    ("feedback loops (thermostat/AC)",   [10, 45, 10, 50, 0, 30],        None),
-    ("p-values (courtroom)",             [5, 45, 5, 40, 20, 0],          None),
-    ("deadlock (four-way stop)",         [20, 10, 15, 35, 35, 35],       None),
-    ("MLE (hot-and-cold)",               [0, 5, 0, 10, 0, 0],            None),
-    ("cond. probability (Monty Hall)",   [0, 5, 0, 0, 5, 0],             None),
+    ("feedback loops (thermostat/AC)",   [10, 45, 10, 50, 0, 30],        VIOLET),
+    ("p-values (courtroom)",             [5, 45, 5, 40, 20, 0],          AQUA),
+    ("deadlock (four-way stop)",         [20, 10, 15, 35, 35, 35],       RED),
+    ("MLE (hot-and-cold)",               [0, 5, 0, 10, 0, 0],            YELLOW),
+    ("cond. probability (Monty Hall)",   [0, 5, 0, 0, 5, 0],             MAGENTA),
 ]
 x = list(range(6))
 fig, ax = plt.subplots(figsize=(12.0, 5.8), dpi=200)
-dodge = {"path dependence (QWERTY)": 2.2, "circuits (water pipes)": 1.1,
-         "packets (postal mail)": -1.1, "MLE (hot-and-cold)": 1.0,
+dodge = {"path dependence (QWERTY)": 2.2, "circuits (water pipes) [control]": 1.1,
+         "gradient descent (foggy hiker)": 0.0, "MLE (hot-and-cold)": 1.0,
          "cond. probability (Monty Hall)": -1.0}
 label_y = {}
-for name, ys, hl in data:
+for name, ys, color in data:
     d = dodge.get(name, 0.0)
     yy = [v + d for v in ys]
-    ax.plot(x, yy, color=(hl or "#b5b4ad"), linewidth=2.4 if hl else 1.3,
-            zorder=3 if hl else 2, marker="o", markersize=4 if hl else 2.4,
-            markerfacecolor=(hl or "#b5b4ad"), markeredgecolor=SURFACE, markeredgewidth=0.6)
-    label_y[name] = (yy[-1], hl)
+    control = "[control]" in name
+    ax.plot(x, yy, color=color, linewidth=1.5 if control else 2.0,
+            zorder=2 if control else 3, marker="o", markersize=2.6 if control else 3.6,
+            markerfacecolor=color, markeredgecolor=SURFACE, markeredgewidth=0.6,
+            linestyle="--" if control else "-")
+    label_y[name] = (yy[-1], color)
 
 GAP = 5.8
 order = sorted(label_y.items(), key=lambda kv: -kv[1][0])
 slots = []
-for i, (name, (y, hl)) in enumerate(order):
+for i, (name, (y, c)) in enumerate(order):
     slots.append(y if i == 0 else min(y, slots[i - 1] - GAP))
 if slots and slots[-1] < -4.0:
     slots[-1] = -4.0
     for i in range(len(slots) - 2, -1, -1):
         slots[i] = max(slots[i], slots[i + 1] + GAP)
-for (name, (y, hl)), yy in zip(order, slots):
-    ax.annotate(name, xy=(5, y), xytext=(5.12, yy), fontsize=8.2,
-                color=(hl or SEC), fontweight="bold" if hl else "normal",
+for (name, (y, color)), yy in zip(order, slots):
+    ax.plot([5.08, 5.22], [yy, yy], color=color, linewidth=2.6, clip_on=False,
+            solid_capstyle="round")
+    ax.annotate(name, xy=(5, y), xytext=(5.28, yy), fontsize=8.2, color=SEC,
                 va="center", annotation_clip=False)
 
-ax.set_xlim(-0.15, 6.6); ax.set_ylim(-6, 106)
+ax.set_xlim(-0.15, 6.9); ax.set_ylim(-6, 106)
 ax.set_xticks(x); ax.set_xticklabels(COND_LABELS, fontsize=7.8)
 ax.set_yticks([0, 25, 50, 75, 100])
 ax.set_yticklabels(["0%", "25%", "50%", "75%", "100%"], fontsize=8.2)
@@ -81,7 +87,7 @@ ax.set_title("Deeply conventionalized analogies survive every condition; weak on
              fontsize=12, fontweight="bold", color=INK, loc="left", pad=14)
 ax.text(0, 1.015, "Share of generations where the canonical analogy carries the explanation · 20 runs/cell · 2 models pooled · all 1,339 outputs coded",
         transform=ax.transAxes, fontsize=7.8, color=MUT, va="bottom")
-fig.subplots_adjust(right=0.73, left=0.05, top=0.85, bottom=0.15)
+fig.subplots_adjust(right=0.72, left=0.05, top=0.85, bottom=0.15)
 fig.savefig(OUT / "fig1_trope_survival.png")
 plt.close(fig)
 
